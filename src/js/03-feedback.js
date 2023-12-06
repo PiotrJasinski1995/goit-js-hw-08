@@ -15,8 +15,8 @@ form.addEventListener(
   }, 500)
 );
 
-form.addEventListener('submit', _event => {
-  _event.preventDefault();
+form.addEventListener('submit', event => {
+  event.preventDefault();
   const formData = load('feedback-form-state');
   console.log(formData);
   localStorage.removeItem('feedback-form-state');
