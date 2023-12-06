@@ -16,18 +16,20 @@ form.addEventListener(
 );
 
 form.addEventListener('submit', _event => {
-  localStorage.clear();
+  _event.preventDefault();
+  const formData = load('feedback-form-state');
+  console.log(formData);
+  localStorage.removeItem('feedback-form-state');
   emailInput.value = '';
   messageInput.value = '';
 });
 
 window.addEventListener('DOMContentLoaded', _event => {
-  const formData = localStorage.getItem('feedback-form-state');
+  const formData = load('feedback-form-state');
 
-  if (formData !== '') {
-    const formObj = load('feedback-form-state');
-    emailInput.value = formObj.email;
-    messageInput.value = formObj.message;
+  if (formData) {
+    emailInput.value = formData.email;
+    messageInput.value = formData.message;
   }
 });
 
